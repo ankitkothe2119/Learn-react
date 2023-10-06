@@ -1,32 +1,42 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 
 
 
 function App() {
   const [length, setLength] = useState(8);
   const [number, setNumber] = useState(false);
-  const [specailCharacter, setSpecailCharacter] = useState(false);
+  const [Character, setCharacter] = useState(false);
   const [password, setPassword] = useState("");
 
+  //useRef
+  const passwordaRef= useRef(null)
+  //use callback hook
   const passwordGenerator = useCallback(() => {
     let pass = "";
     let str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcefghijklmnopqrstuvwxyz"
     if (number) str += "0123456789"
-    if (specailCharacter) str += "!@#$%^&*()-_=+[]{}:;~`<,.>?/"
+    if (Character) str += "!@#$%^&*()-_=+[]{}:;~`<,.>?/"
 
     for (let i = 1; i <= length; i++) {
-      let char = Math.floor(Math.rendom() * str.length + 1)
+      let char = Math.floor(Math.random() * str.length + 1)
       pass += str.charAt(char)
 
     }
     setPassword(pass)
 
 
-  }, [length, number, specailCharacter, setPassword])
+  }, [length, number, Character, setPassword])
 
+  const copyPasswordBTN = useCallback(()=>{
+    passwordaRef.current?.select()
+    passwordaRef.current?.setSelectionRange(0,100)
+    window.navigator.clipboard.writeText(password)
+  },
+  [password])
+  //use effect
   useEffect(() => {
     passwordGenerator()
-  }, [length, number, specailCharacter])
+  }, [length, number, Character])
 
   return (
     <>
@@ -39,8 +49,10 @@ function App() {
             className='outline-none w-full py-1 px-3'
             placeholder='password'
             readOnly
+            ref={passwordaRef}
           />
           <button
+          onClick={copyPasswordBTN}
             className='outline-none bg-blue-500 text-yellow-100
          px-3 py-0.5'
           >Copy</button>
@@ -67,10 +79,10 @@ function App() {
           </div>
           <div className='flex items-center gap-x-1'>
             <input type="checkbox"
-              defaultChecked={specailCharacter}
+              defaultChecked={Character}
               id='characterInput'
               className=' cursor-pointer'
-              onChange={(e) => { setSpecailCharacter((prev) =>!prev) }}
+              onChange={(e) => { setCharacter((prev) =>!prev) }}
             />
             <label >Spacle-Char</label>
           </div>
