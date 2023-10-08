@@ -28,7 +28,7 @@ function App() {
     <div
       className="w-full h-screen flex flex-wrap justify-center items-center bg-cover bg-no-repeat"
       style={{
-        backgroundImage: `url('https://media.istockphoto.com/id/1221836825/photo/indian-currency-on-virtual-interface-of-stock-market-data.jpg?s=1024x1024&w=is&k=20&c=ZfSrwlo-Ru0fInJQKa48UI9hsEFBiu-w5bSmyApBTF0=')`,
+        backgroundImage: `url('https://i.pinimg.com/564x/a0/57/af/a057afe4ded4705c350f58f5be2521af.jpg')`,
       }}
     >
       <div className="w-full">
