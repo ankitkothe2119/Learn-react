@@ -1,5 +1,7 @@
 import { useState } from 'react'
-
+// import Header from  './components/Hearder/Hearder'
+// import Home from  './components/Home/Home'
+// import Footer from  './components/Footer/Footer'
 
 import './App.css'
 
@@ -8,7 +10,9 @@ function App() {
 
   return (
     <>
-      <h1 className=' bg-green-500 p-4'>react router</h1>
+    {/* <Header/>
+    <Home />
+    <Footer /> */}
     </>
   )
 }
