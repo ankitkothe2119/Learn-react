@@ -1,4 +1,5 @@
-import React,{useState ,useContext} from 'react'
+import  { useState,useContext} from 'react'
+// import  React from 'react'
 import UserContext from '../Context/UserContext'
 
 export const Login = () => {
@@ -23,6 +24,7 @@ export const Login = () => {
         value={username} 
         onChange={(e)=> setUsername(e.target.value)}
         placeholder='UserName' />
+
         <input type="text"
           value={password} 
           className=' bg-green-600' 
